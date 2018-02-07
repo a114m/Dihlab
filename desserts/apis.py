@@ -3,12 +3,11 @@
 
 from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
-from django.db.models import Q
 from django.db import IntegrityError
 from desserts.models import Dessert, Order, OrderDessert, Wishlist, CartItem
 from desserts import permissions as custom_permissions
 from desserts import serializers
-from rest_framework import viewsets, generics, views, exceptions, permissions
+from rest_framework import viewsets, generics, views, exceptions, permissions, mixins
 from rest_framework.response import Response
 
 User = get_user_model()
@@ -175,9 +174,14 @@ class CheckoutCart(views.APIView):
             return Response("Cart Checked Out")
 
 
-# class OrderList(generics.ListAPIView):  # TODO: List own and shared orders.
-class OrderViewSet(viewsets.ModelViewSet):  # TODO: List own and shared orders.
-    """API endpoint that allows view and edit of orders."""
+# class OrderViewSet(viewsets.ModelViewSet):
+class OrderViewSet(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.DestroyModelMixin,
+    viewsets.GenericViewSet
+):
+    """API endpoint that allows list, view and delete of orders."""
 
     queryset = Order.objects.all()
     serializer_class = serializers.OrderSerializer

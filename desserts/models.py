@@ -14,12 +14,13 @@ class BaseModel(models.Model):
 
 
 class User(AbstractUser):
-    cart_shared_with = models.ManyToManyField('self', symmetrical=False, related_name='shared_carts')
+    cart_shared_with = models.ManyToManyField('self', symmetrical=False, related_name='shared_carts', blank=True)
     is_guest = models.BooleanField('Guest', default=False, blank=True, help_text='Gust account? default is false')
     cart_items = models.ManyToManyField(
         'Dessert',
         through='CartItem',
         through_fields=('owner', 'dessert'),
+        blank=True,
         help_text='Items this user has in the cart',
     )
 
@@ -51,7 +52,7 @@ class Order(BaseModel):
         through='OrderDessert',
         through_fields=('order', 'dessert'),
     )
-    shared_with = models.ManyToManyField(User, related_name='shared_orders')
+    shared_with = models.ManyToManyField(User, related_name='shared_orders', blank=True)
 
     def __unicode__(self):
         return "%s: %s's order" % (self.id, self.owner.username)
@@ -70,7 +71,7 @@ class Wishlist(BaseModel):
     name = models.CharField(max_length=50, default='Untitled')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     desserts = models.ManyToManyField(Dessert)
-    shared_with = models.ManyToManyField(User, related_name='shared_lists')
+    shared_with = models.ManyToManyField(User, related_name='shared_lists', blank=True)
 
     def __unicode__(self):
         return "%s' %s wishlist" % (self.owner.username, self.name)

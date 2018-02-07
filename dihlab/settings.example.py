@@ -188,9 +188,9 @@ JWT_AUTH = {
 
     'JWT_ALLOW_REFRESH': True,
 
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=14),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=2),
 }
 
 REST_USE_JWT = True
 
-APPEND_SLASH=True
+APPEND_SLASH = True
