@@ -1,0 +1,179 @@
+[{
+  "model": "desserts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$SWyKBWaKkyB0$QVZ9Ys+gMRk/mTLJad7DXFYqD+MdJs6xGFdY1PkK32I=",
+    "last_login": "2018-02-07T14:06:44.861Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@dihlab.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2018-02-07T13:38:10.939Z",
+    "is_guest": false,
+    "groups": [],
+    "user_permissions": [],
+    "cart_shared_with": []
+  }
+}, {
+  "model": "desserts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$U0QxWWsNcmpe$5CGEMqJP/xsXksRwMnW/56uCvBViibL/09v75nY5AYs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "allam",
+    "first_name": "",
+    "last_name": "",
+    "email": "allam@dihlab.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-02-07T13:38:35Z",
+    "is_guest": false,
+    "groups": [],
+    "user_permissions": [],
+    "cart_shared_with": [
+      3
+    ]
+  }
+}, {
+  "model": "desserts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$qcR6X6prAPe9$Ehvz0cavFQG8aUVdy13Np3qtWza8uNhbrysn04FSQCk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-02-07T13:45:21Z",
+    "is_guest": false,
+    "groups": [],
+    "user_permissions": [],
+    "cart_shared_with": []
+  }
+}, {
+  "model": "desserts.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$5noN3351hrV3$DD+00hcaL2OJj+ODlaLtSJfortGPTgtnr/uNdn6l9ak=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user3",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-02-07T13:50:39Z",
+    "is_guest": false,
+    "groups": [],
+    "user_permissions": [],
+    "cart_shared_with": []
+  }
+}, {
+  "model": "desserts.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$QxsIf16x9YnB$LUPeihBuXgOIae1kqm3oCE3N32WB5Um7D0dEgfJjjrA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user4",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-02-07T14:35:00.894Z",
+    "is_guest": false,
+    "groups": [],
+    "user_permissions": [],
+    "cart_shared_with": []
+  }
+}, {
+  "model": "desserts.dessert",
+  "pk": 1,
+  "fields": {
+    "created_at": "2018-02-07T13:41:24.101Z",
+    "updated_at": "2018-02-07T13:41:24.101Z",
+    "name": "Cheese Cake",
+    "price": "25.00",
+    "description": "Piece of cake",
+    "image": "desserts/1387411272847.jpeg",
+    "calories": 35
+  }
+}, {
+  "model": "desserts.dessert",
+  "pk": 2,
+  "fields": {
+    "created_at": "2018-02-07T13:43:43.468Z",
+    "updated_at": "2018-02-07T13:43:43.468Z",
+    "name": "Cookie",
+    "price": "5.00",
+    "description": "Yummy !",
+    "image": "desserts/JJIhU4v.png",
+    "calories": 15
+  }
+}, {
+  "model": "desserts.dessert",
+  "pk": 3,
+  "fields": {
+    "created_at": "2018-02-07T13:49:08.130Z",
+    "updated_at": "2018-02-07T13:49:08.130Z",
+    "name": "Cinnamon Roll",
+    "price": "32.00",
+    "description": "",
+    "image": "desserts/cinnamonroll.jpg",
+    "calories": 42
+  }
+}, {
+  "model": "desserts.dessert",
+  "pk": 4,
+  "fields": {
+    "created_at": "2018-02-07T13:52:08.130Z",
+    "updated_at": "2018-02-07T13:52:08.130Z",
+    "name": "Apple Pie",
+    "price": "60.00",
+    "description": "Try our delicious apple pie",
+    "image": "",
+    "calories": 60
+  }
+}, {
+  "model": "desserts.cartitem",
+  "pk": 1,
+  "fields": {
+    "created_at": "2018-02-07T13:44:08.932Z",
+    "updated_at": "2018-02-07T13:44:08.932Z",
+    "owner": 2,
+    "dessert": 1,
+    "quantity": 1
+  }
+}, {
+  "model": "desserts.cartitem",
+  "pk": 2,
+  "fields": {
+    "created_at": "2018-02-07T13:44:08.933Z",
+    "updated_at": "2018-02-07T13:44:08.933Z",
+    "owner": 2,
+    "dessert": 2,
+    "quantity": 1
+  }
+}, {
+  "model": "desserts.wishlist",
+  "pk": 1,
+  "fields": {
+    "created_at": "2018-02-07T13:45:14.993Z",
+    "updated_at": "2018-02-07T13:45:14.993Z",
+    "name": "my wish list",
+    "owner": 2,
+    "desserts": [
+      1
+    ],
+    "shared_with": []
+  }
+}]
