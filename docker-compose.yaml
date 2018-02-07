@@ -1,0 +1,31 @@
+version: '2'
+services:
+  mysql:
+    image: 'mysql:5.7'
+    environment:
+      MYSQL_DATABASE: "dihlab"
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    restart: always
+    volumes:
+      - 'mysql:/var/lib/mysql'
+
+  web:
+    build: .
+    ports:
+      - '8000:8000'
+      - '80:8000'
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    environment:
+      - ENV=production
+      - DB_NAME=dihlab
+      - DB_USER=root
+      - PASSWORD=
+      - DB_HOST=mysql
+      - DB_PORT=3306
+    restart: on-failure:10
+
+volumes:
+  mysql:

@@ -8,3 +8,4 @@ djangorestframework==3.7.7
 Markdown==2.6.11
 mysqlclient==1.3.12
 Pillow==5.0.0
+WhiteNoise==3.3.1

@@ -5,7 +5,7 @@ import datetime
 from os import getenv
 
 
-ENV = getenv('ENV', 'development').lower()
+ENV = getenv('ENV', 'production').lower()
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,6 +38,7 @@ INSTALLED_APPS = {
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'nested_admin',
         'rest_framework',
         'rest_auth',
         'desserts',
@@ -50,6 +51,7 @@ INSTALLED_APPS = {
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'nested_admin',
         'rest_framework',
         'rest_auth',
         'desserts',
@@ -93,7 +95,7 @@ WSGI_APPLICATION = 'dihlab.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': getenv('DB_NAME', 'dihlab_dev'),
+        'NAME': getenv('DB_NAME', 'dihlab'),
         'USER': getenv('DB_USER', 'root'),
         'PASSWORD': getenv('DB_PASSWORD', ''),
         'HOST': getenv('DB_HOST', '127.0.0.1'),
