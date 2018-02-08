@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator
 
 
 class BaseModel(models.Model):
@@ -27,10 +28,12 @@ class User(AbstractUser):
 
 class Dessert(BaseModel):
     name = models.CharField(max_length=50, help_text='Shown name')
-    price = models.DecimalField(max_digits=9, decimal_places=2, help_text='Dessert price')
+    price = models.DecimalField(max_digits=9, decimal_places=2, help_text='Dessert price',
+                                validators=[MinValueValidator(0, message="Price can't be below 0")])
     description = models.CharField(max_length=500, blank=True, help_text='Dessert description. [Optional]')
     image = models.ImageField(upload_to='desserts/', help_text='Shown image')
-    calories = models.IntegerField(help_text='Number of calories the dessert provides')
+    calories = models.IntegerField(help_text='Number of calories the dessert provides',
+                                   validators=[MinValueValidator(0, message="Calories can't be below 0")])
 
     def __unicode__(self):
         return self.name
