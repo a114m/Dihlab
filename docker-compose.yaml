@@ -28,6 +28,8 @@ services:
       - DB_USER=root
       - DB_PASSWORD=
     restart: on-failure:10
+    # volumes:
+    #   - .:/app
 
 volumes:
   mysql:

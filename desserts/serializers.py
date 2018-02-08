@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
 class DessertSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Dessert
-        fields = ('id', 'url', 'name', 'description', 'image', 'calories',)
+        fields = ('id', 'url', 'name', 'price', 'description', 'image', 'calories',)
 
 
 class CartSerializer(serializers.HyperlinkedModelSerializer):

@@ -52,23 +52,28 @@ class DessertViewSet(viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
 
-class OwnCartViewSet(viewsets.ModelViewSet):
+class OwnCartViewSet(viewsets.GenericViewSet,
+                     mixins.ListModelMixin,
+                     mixins.CreateModelMixin):
     """
     API endpoint to view and add desserts to cart.
 
-    get:
+    list:
     List own cart desserts
 
-    post:
+    create:
     Add dessert to own cart ex.:
-    {
-        "desserts": [
-            {
-                "dessert_id": 5,
-                "quantity": 3
-            }
-        ]
-    }
+
+
+        {
+            "desserts": [
+                {
+                    "dessert_id": 5,
+                    "quantity": 3
+                }
+            ]
+        }
+
     """
 
     queryset = CartItem.objects.all()
@@ -90,10 +95,11 @@ class ShareCart(views.APIView):
     API endpoint to share/unshare cart with provided user_id.
 
     post:
-    "/<user_id>" Share current user cart with user_id
+    Share current user cart with user with {id}
 
     delete:
-    "/<user_id>" Unshare current user cart with user_id
+    Unshare current user cart with user with {id}
+
     will return 200 even if invalid user_id is provided or the cart wasn't shared
     """
 
@@ -106,9 +112,6 @@ class ShareCart(views.APIView):
         return 'unshared'
 
     def post(self, request, *args, **kwargs):
-        return self._apply_action(request, self._share_cart)
-
-    def put(self, request, *args, **kwargs):
         return self._apply_action(request, self._share_cart)
 
     def delete(self, request, *args, **kwargs):
@@ -136,7 +139,8 @@ class CheckoutCart(views.APIView):
 
     post:
     "/" Checkout own cart
-    "/user_id" Check the shared cart with you for user_id
+
+    "/{id}" Check the shared cart with you for user with {id}
     """
 
     permission_classes = (custom_permissions.CartCheckout,)
@@ -175,12 +179,10 @@ class CheckoutCart(views.APIView):
 
 
 # class OrderViewSet(viewsets.ModelViewSet):
-class OrderViewSet(
-    mixins.ListModelMixin,
-    mixins.RetrieveModelMixin,
-    mixins.DestroyModelMixin,
-    viewsets.GenericViewSet
-):
+class OrderViewSet(viewsets.GenericViewSet,
+                   mixins.ListModelMixin,
+                   mixins.RetrieveModelMixin,
+                   mixins.DestroyModelMixin):
     """API endpoint that allows list, view and delete of orders."""
 
     queryset = Order.objects.all()
