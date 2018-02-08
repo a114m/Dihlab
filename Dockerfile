@@ -1,9 +1,10 @@
 FROM python:2.7-alpine3.7
-ADD . /app
-WORKDIR /app
+
+ENV PYTHONUNBUFFERED 1
 
 
 # Install system libs
+
 RUN apk update
 RUN apk add \
   gcc\
@@ -18,12 +19,28 @@ RUN apk add \
   libc-dev
 
 
-# Install python packages
-RUN mv dihlab/settings.example.py dihlab/settings.py
+RUN mkdir . /app
+WORKDIR /app
+
+
+# Install Python packages
+
+ADD requirements.txt /app/
 RUN pip install -r requirements.txt
+
+
+# Mount and configure Django app
+
+ADD . /app
+RUN cp dihlab/settings.example.py dihlab/settings.py
 RUN python manage.py collectstatic --no-input
 
 
+# Expose port 8000
+
 EXPOSE 8000
+
+
+# Start app command
 
 CMD ./run.sh
