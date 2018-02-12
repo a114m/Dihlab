@@ -6,8 +6,8 @@ services:
       - MYSQL_DATABASE=dihlab
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     restart: always
-    ports:
-      - '127.0.0.1:3306:3306'
+    # ports:
+    #   - '127.0.0.1:3306:3306'
     volumes:
       - 'mysql:/var/lib/mysql'
 

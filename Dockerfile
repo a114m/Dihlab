@@ -43,4 +43,4 @@ EXPOSE 8000
 
 # Start app command
 
-CMD ./run.sh
+CMD /bin/sh -c './run.sh'
