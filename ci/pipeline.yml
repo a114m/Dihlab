@@ -1,0 +1,24 @@
+resources:
+  - name: dihlab_django_repo
+    type: git
+    source:
+      uri: https://github.com/a114m/django-drf-ecommerce-example.git
+      branch: concourse
+      paths: [Dockerfile]
+
+  - name: django_image
+    type: docker-image
+    source:
+      repository: a114m/dihlab-django
+      email: ((docker_mail))
+      username: ((docker_user))
+      password: ((docker_pass))
+
+
+jobs:
+  - name: build_dihlab_django_image
+    plan:
+      - get: dihlab_django_repo
+        trigger: true
+      - put: django_image
+        params: {build: dihlab_django_repo}
